@@ -41,6 +41,8 @@ export async function createClient() {
 // Helper: devuelve el usuario autenticado o null.
 // Usa getUser() (valida el JWT contra Supabase), no getSession().
 export async function getUser() {
+  // Antes de configurar Supabase (Sem 2) no hay sesión posible.
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return null
   const supabase = await createClient()
   const {
     data: { user },
