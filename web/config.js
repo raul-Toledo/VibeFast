@@ -22,10 +22,10 @@ const config = {
   // Identidad del producto
   // -----------------------------------------------------------
   app: {
-    name: "VibeFast",
+    name: "Yobby",
     description:
-      "Boilerplate AI-native para founders. Construido para el Curso de Vibecoding Remotto.",
-    domain: "vibefast.dev", // sin https://, sin www
+      "Marketplace que conecta hogares en Chihuahua con técnicos verificados como plomeros y electricistas. Contrata de forma segura con pagos por Mercado Pago y decisiones basadas en reputación.",
+    domain: "yobby.mx", // sin https://, sin www
     locale: "es", // "es" | "en"
     // URL pública: usa NEXT_PUBLIC_APP_URL en .env. En este config solo definimos el default.
     defaultUrl: "http://localhost:3000",
@@ -36,9 +36,19 @@ const config = {
   // -----------------------------------------------------------
   brand: {
     // Color primario en HEX. DaisyUI lo aplica como --color-primary via theme.
-    primary: "#7c3aed", // violet-600
+    primary: "#FF8C00", // Perfil Cliente (Primario)
+    
+    // Paleta de colores Yobby
+    background: "#FFFDF5", // Fondo Base (Global)
+    clientSecondary: "#FFEDD5", // Perfil Cliente (Secundario)
+    clientAccent: "#10B981", // Perfil Cliente (Acento)
+    techPrimary: "#0068E6", // Perfil Técnico (Primario)
+    techSecondary: "#DBEAFE", // Perfil Técnico (Secundario)
+    techAccent: "#8B5CF6", // Perfil Técnico (Acento)
+    textMain: "#334155", // Texto Principal
+
     // Logo: puede ser texto o ruta a /public/logo.svg
-    logoText: "VibeFast",
+    logoText: "Yobby",
     logoSrc: null,
     // Estilo del bordeado global (DaisyUI usa esto para botones, cards)
     radius: "1rem",
@@ -81,9 +91,9 @@ const config = {
   email: {
     // Asegúrate de tener el dominio verificado en Resend antes de cambiar `from`.
     // En desarrollo Resend permite enviar a tu propio correo desde `onboarding@resend.dev`.
-    from: "VibeFast <onboarding@resend.dev>",
-    replyTo: "hola@vibefast.dev",
-    supportEmail: "soporte@vibefast.dev",
+    from: "Yobby <onboarding@resend.dev>",
+    replyTo: "hola@yobby.mx",
+    supportEmail: "soporte@yobby.mx",
   },
 
   // -----------------------------------------------------------
@@ -107,142 +117,127 @@ const config = {
       { label: "Docs", href: "/docs" },
     ],
     hero: {
-      eyebrow: "Curso Vibecoding · Remotto × Startup Chihuahua",
-      title: "De 0 a producto AI-native en 11 semanas.",
+      eyebrow: "Encuentra al experto ideal",
+      title: "Contrata técnicos de confianza para tu hogar en Chihuahua de forma segura.",
       subtitle:
-        "VibeFast es la plantilla del curso: Next.js, Supabase, OpenAI y MCP cableados desde el día 1. Tú extiendes con prompts en Cursor.",
-      cta: { label: "Únete al waitlist", href: "#waitlist" },
-      ctaSecondary: { label: "Ver docs", href: "/docs" },
+        "Conectamos tu hogar con plomeros y electricistas verificados, con pagos protegidos mediante Mercado Pago y reputación comprobada.",
+      cta: { label: "Agendar ahora", href: "#waitlist" },
+      ctaSecondary: { label: "Ver servicios", href: "#features" },
     },
     problem: {
       eyebrow: "El problema",
-      title: "Construir el andamiaje mata tu momentum.",
+      title: "La incertidumbre al contratar servicios para el hogar.",
       subtitle:
-        "La mayoría de founders se atoran semanas configurando lo mismo antes de tocar su idea real.",
+        "Es difícil saber en quién confiar cuando abres la puerta de tu casa a un desconocido.",
       items: [
         {
-          icon: "Timer",
-          title: "Semanas en boilerplate",
-          body: "Auth, base de datos, deploy, emails… configuras lo mismo que todos antes de validar nada.",
+          icon: "ShieldAlert",
+          title: "Falta de confianza",
+          body: "No sabes a quién estás contratando ni si su trabajo será de calidad.",
         },
         {
-          icon: "Puzzle",
-          title: "Parálisis por herramientas",
-          body: "Cada capa tiene 10 opciones. Comparas en vez de construir y pierdes el hilo.",
+          icon: "Wallet",
+          title: "Riesgos en el pago",
+          body: "Temor a pagar por adelantado y que el técnico no termine el trabajo o lo haga mal.",
         },
         {
-          icon: "PlugZap",
-          title: "La IA no se integra sola",
-          body: "Structured outputs, tool use, agentes y MCP suenan bien hasta que hay que cablearlos.",
+          icon: "Search",
+          title: "Difícil de encontrar",
+          body: "Perder tiempo buscando recomendaciones en lugar de tener expertos validados al instante.",
         },
       ],
     },
     features: {
-      eyebrow: "Lo que ya viene listo",
-      title: "Stack completo, una sola decisión por capa.",
-      subtitle: "No pierdes tiempo eligiendo herramientas. Te enfocas en tu producto.",
+      eyebrow: "Nuestra solución",
+      title: "Tranquilidad garantizada en cada servicio.",
+      subtitle: "Un marketplace diseñado pensando en tu seguridad y confianza.",
       items: [
         {
-          icon: "Sparkles",
-          title: "AI nativa",
-          body: "OpenAI con structured outputs, tool use, agentes con LangGraph y MCP. Listo para activar.",
+          icon: "ShieldCheck",
+          title: "Técnicos Verificados (KYC)",
+          body: "Todos nuestros técnicos pasan por un riguroso proceso de verificación de identidad para tu tranquilidad.",
         },
         {
-          icon: "Database",
-          title: "Supabase + Auth",
-          body: "Base de datos con RLS, Google Auth y tablas pre-modeladas. No diseñas schema desde cero.",
+          icon: "CreditCard",
+          title: "Pagos Seguros",
+          body: "Tu dinero está protegido con Mercado Pago hasta que el trabajo se complete satisfactoriamente.",
         },
         {
-          icon: "Zap",
-          title: "Deploy en minutos",
-          body: "Vercel + Supabase Cloud. Una URL pública el primer día.",
-        },
-        {
-          icon: "BookOpen",
-          title: "Docs semana a semana",
-          body: "Tutoriales mapeados al temario del curso, con prompts de Cursor listos para copiar.",
-        },
-        {
-          icon: "Mail",
-          title: "Email + analytics",
-          body: "Resend para correos transaccionales y PostHog opcional para tracking.",
-        },
-        {
-          icon: "Cpu",
-          title: "Hardware-ready",
-          body: "Conexión MCP al ESP-Claw para el caso de hardware con IA del Módulo 3.",
+          icon: "Star",
+          title: "Reputación Real",
+          body: "Toma decisiones informadas basándote en reseñas y calificaciones de otros clientes en tu ciudad.",
         },
       ],
     },
     faq: {
       eyebrow: "Preguntas frecuentes",
-      title: "Lo que todo founder pregunta antes de arrancar.",
+      title: "Lo que todo cliente pregunta antes de agendar.",
       items: [
         {
-          q: "¿Necesito saber programar?",
-          a: "No. El curso asume founders no técnicos. Construyes describiendo en Cursor; el boilerplate hace el resto.",
+          q: "¿Cómo funciona la garantía del pago seguro?",
+          a: "Tu pago se retiene de forma segura con Mercado Pago. Solo se libera al técnico cuando confirmas que el trabajo se realizó correctamente.",
         },
         {
-          q: "¿Cuánto cuesta correr esto?",
-          a: "Vercel y Supabase tienen tiers gratuitos generosos. OpenAI cobra por uso: con gpt-4o-mini, el costo de un MVP del curso ronda US$5-20.",
+          q: "¿Qué pasa si el técnico no hace un buen trabajo?",
+          a: "Si el servicio no cumple con lo acordado, nuestro sistema de pagos protegidos te permite solicitar una revisión y el reembolso de tu dinero.",
         },
         {
-          q: "¿Puedo cambiar el stack?",
-          a: "Sí, pero el curso (y las docs) asumen este stack. Cambiar pieza por pieza es posible después del curso.",
+          q: "¿Cómo verifican a los técnicos?",
+          a: "Realizamos un proceso de validación de identidad (KYC) exhaustivo, comprobando sus credenciales y antecedentes antes de permitirles ofrecer servicios.",
         },
         {
-          q: "¿Y si me atoro?",
-          a: "Las docs incluyen una sección de troubleshooting con los 20 errores más comunes. Además hay sesión semanal con el docente.",
+          q: "¿Puedo ver las opiniones de otros clientes?",
+          a: "Sí, el perfil de cada técnico muestra calificaciones y reseñas reales dejadas por otros usuarios, ayudándote a elegir por su reputación.",
         },
       ],
     },
     socialProof: {
-      text: "Founders del curso ya lanzaron con este stack",
-      logos: ["Remotto", "Startup Chihuahua", "Next.js", "Supabase", "OpenAI", "Vercel"],
+      text: "Con la confianza de hogares y profesionales en Chihuahua",
+      logos: ["Mercado Pago", "Stripe"],
     },
     testimonials: {
       eyebrow: "Prueba social",
-      title: "Founders que ya lanzaron con VibeFast.",
-      subtitle: "Testimonios de cohortes anteriores del curso.",
+      title: "Lo que dicen nuestros clientes.",
+      subtitle: "Historias reales de hogares y técnicos en Chihuahua.",
       items: [
         {
           quote:
-            "Pasé de una idea en Notion a un MVP con IA en producción en dos semanas. Nunca había tocado código.",
-          author: "Ana Márquez",
-          role: "Founder · Fisio en casa",
+            "Tenía miedo de contratar un plomero sin conocerlo, pero con Yobby vi sus reseñas y todo fue súper seguro. El trabajo quedó excelente.",
+          author: "María G.",
+          role: "Cliente",
         },
         {
           quote:
-            "El boilerplate ya traía auth, base de datos y el agente cableados. Solo describí lo que quería en Cursor.",
-          author: "Diego Sáenz",
-          role: "Founder · Tutor IA",
+            "Saber que mi dinero estaba protegido por Mercado Pago me dio la tranquilidad que necesitaba para agendar una reparación eléctrica.",
+          author: "Carlos T.",
+          role: "Cliente",
         },
         {
           quote:
-            "Las docs semana a semana fueron mi mapa. Copiaba el prompt, ajustaba y avanzaba sin atorarme.",
-          author: "Lucía Fernández",
-          role: "Founder · Recetario inteligente",
+            "Como técnico, esta app me ha ayudado a conseguir clientes que valoran mi trabajo gracias a mis buenas calificaciones.",
+          author: "Javier R.",
+          role: "Electricista",
         },
       ],
     },
     finalCta: {
       eyebrow: "Tu turno",
-      title: "Deja de configurar. Empieza a construir.",
+      title: "Tu hogar en las mejores manos.",
       subtitle:
-        "Clona la plantilla, edita config.js y ten tu producto AI-native en producción esta semana.",
-      cta: { label: "Únete al waitlist", href: "#waitlist" },
-      ctaSecondary: { label: "Leer las docs", href: "/docs" },
+        "Agenda hoy mismo a un técnico confiable y olvídate de las preocupaciones.",
+      cta: { label: "Agendar ahora", href: "#waitlist" },
+      ctaSecondary: { label: "Soy técnico", href: "/docs" },
     },
     waitlist: {
       eyebrow: "Únete primero",
-      title: "Sé de los primeros en saber.",
-      subtitle: "Te avisamos cuando abramos cupos para la siguiente cohorte.",
+      title: "Sé de los primeros en enterarte.",
+      subtitle: "Te avisamos cuando estemos disponibles en tu zona.",
       successMessage: "¡Listo! Te avisamos en cuanto haya novedades.",
       buttonLabel: "Quiero entrar",
       placeholder: "tu@email.com",
     },
     footer: {
-      tagline: "Construido para founders. Por Remotto × Startup Chihuahua.",
+      tagline: "El marketplace de servicios para el hogar más confiable de Chihuahua.",
       columns: [
         {
           title: "Producto",
@@ -255,23 +250,22 @@ const config = {
         {
           title: "Recursos",
           links: [
-            { label: "Docs", href: "/docs" },
-            { label: "Quick start", href: "/docs/setup/quick-start" },
-            { label: "Troubleshooting", href: "/docs/troubleshooting/errores-comunes" },
+            { label: "Términos", href: "/terms" },
+            { label: "Privacidad", href: "/privacy" },
           ],
         },
         {
           title: "Comunidad",
           links: [
-            { label: "GitHub", href: "https://github.com/arampersand/VibeFast", external: true },
-            { label: "Remotto", href: "https://remotto.com", external: true },
+            { label: "Facebook", href: "#", external: true },
+            { label: "Instagram", href: "#", external: true },
           ],
         },
       ],
       // Compat: links planos usados en el bar inferior
       links: [
-        { label: "Docs", href: "/docs" },
-        { label: "GitHub", href: "https://github.com/arampersand/VibeFast", external: true },
+        { label: "Términos", href: "/terms" },
+        { label: "Privacidad", href: "/privacy" },
       ],
     },
   },
@@ -283,28 +277,28 @@ const config = {
   // -----------------------------------------------------------
   pricing: {
     eyebrow: "Precios",
-    title: "Simple y sin sorpresas.",
-    subtitle: "Empieza gratis. Sube de plan cuando tu producto crezca.",
+    title: "Simple y transparente.",
+    subtitle: "Paga solo lo justo, sin costos ocultos.",
     plans: [
       {
-        id: "starter",
-        name: "Starter",
+        id: "cliente",
+        name: "Clientes",
         price: 0,
-        currency: "USD",
+        currency: "MXN",
         interval: "mes",
-        description: "Para probar el producto.",
-        features: ["Hasta 100 usuarios", "Soporte por email", "Branding VibeFast"],
-        cta: "Empezar gratis",
+        description: "Encuentra y contrata profesionales gratis.",
+        features: ["Búsqueda de técnicos", "Pagos protegidos", "Reseñas verificadas"],
+        cta: "Crear cuenta",
       },
       {
-        id: "pro",
-        name: "Pro",
-        price: 29,
-        currency: "USD",
-        interval: "mes",
-        description: "Para founders que ya facturan.",
-        features: ["Usuarios ilimitados", "Soporte prioritario", "Sin branding"],
-        cta: "Probar Pro",
+        id: "tecnico",
+        name: "Técnicos",
+        price: 15,
+        currency: "%",
+        interval: "por servicio",
+        description: "Para profesionales que buscan más clientes.",
+        features: ["Perfil verificado (KYC)", "Garantía de cobro", "Más clientes"],
+        cta: "Registrarme",
         highlighted: true,
         stripePriceId: "", // llenar cuando se active payments
       },
