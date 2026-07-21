@@ -1,37 +1,25 @@
 // ============================================================
-// Supabase · cliente de servidor
+// Supabase · cliente de servidor (Clerk Integrado)
 // ------------------------------------------------------------
 // Úsalo en Server Components, Route Handlers y Server Actions.
-// Lee/escribe las cookies de sesión vía next/headers.
-//
-// El bloque try/catch en setAll es necesario: desde un Server
-// Component no se pueden escribir cookies (solo leer). El refresh
-// de sesión lo hace el middleware, así que ahí el catch es inocuo.
+// Obtiene el token de Clerk (template 'supabase') y lo inyecta
+// en las cabeceras para que las políticas RLS funcionen.
 // ============================================================
 
-import { createServerClient } from "@supabase/ssr"
-import { cookies } from "next/headers"
+import { createClient as createSupabaseClient } from "@supabase/supabase-js"
+import { auth, currentUser } from "@clerk/nextjs/server"
 
 export async function createClient() {
-  const cookieStore = await cookies()
+  const { getToken } = await auth()
+  const clerkToken = await getToken({ template: "supabase" })
 
-  return createServerClient(
+  return createSupabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll()
-        },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            )
-          } catch {
-            // Llamado desde un Server Component: ignorar.
-            // El middleware ya se encarga de refrescar la sesión.
-          }
+      global: {
+        headers: {
+          Authorization: clerkToken ? `Bearer ${clerkToken}` : undefined,
         },
       },
     }
@@ -39,13 +27,8 @@ export async function createClient() {
 }
 
 // Helper: devuelve el usuario autenticado o null.
-// Usa getUser() (valida el JWT contra Supabase), no getSession().
+// Ahora usamos el usuario nativo de Clerk en lugar de Supabase Auth.
 export async function getUser() {
-  // Antes de configurar Supabase (Sem 2) no hay sesión posible.
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return null
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const user = await currentUser()
   return user
 }

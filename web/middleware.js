@@ -1,10 +1,11 @@
-import { updateSession } from "@/lib/supabase/middleware"
+import { clerkMiddleware } from "@clerk/nextjs/server"
 
-// Refresca la sesión de Supabase en cada request y protege las
-// rutas privadas. La lógica vive en lib/supabase/middleware.js.
-export async function middleware(request) {
-  return updateSession(request)
-}
+// clerkMiddleware() por defecto no protege ninguna ruta a menos que se
+// especifique de manera explícita (p. ej. usando createRouteMatcher)
+// o se maneje en cada página. Para este boilerplate, mantenemos
+// la protección delegada a las páginas/componentes o podemos
+// agregar la lógica del matcher aquí si es necesario.
+export default clerkMiddleware()
 
 export const config = {
   matcher: [

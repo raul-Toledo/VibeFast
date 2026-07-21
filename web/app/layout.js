@@ -41,23 +41,27 @@ export const viewport = {
   initialScale: 1,
 }
 
+import { ClerkProvider } from "@clerk/nextjs"
+
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang={config.app.locale}
-      data-theme="vibefast"
-      suppressHydrationWarning
-      className={`${spaceGrotesk.variable} ${dmSans.variable}`}
-      style={{ "--color-primary": config.brand.primary }}
-    >
-      <body className="bg-base-100 text-base-content">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('theme');if(t==='vibefast'||t==='vibefast-dark'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}`,
-          }}
-        />
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang={config.app.locale}
+        data-theme="vibefast"
+        suppressHydrationWarning
+        className={`${spaceGrotesk.variable} ${dmSans.variable}`}
+        style={{ "--color-primary": config.brand.primary }}
+      >
+        <body className="bg-base-100 text-base-content">
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `try{var t=localStorage.getItem('theme');if(t==='vibefast'||t==='vibefast-dark'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}`,
+            }}
+          />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
